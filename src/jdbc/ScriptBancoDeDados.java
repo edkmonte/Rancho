@@ -5,14 +5,14 @@
 //use db_projetorancho;
 //
 //create table tb_refeicoes(
-//	ref_codigo int not null auto_increment,
+//    ref_codigo int not null auto_increment,
 //    ref_tipo varchar(60) not null,
 //    ref_horario varchar(5) not null,
 //    primary key(ref_codigo)
 //) default charset = utf8;
 //
 //create table tb_pacientes(
-//	pac_codigo int not null auto_increment,
+//    pac_codigo int not null auto_increment,
 //    pac_nome varchar(155) not null,
 //    pac_cpf varchar(14) not null,
 //    pac_dtEntrada date not null,
@@ -22,20 +22,20 @@
 //)default charset = utf8;
 //
 //create table tb_acompanhante(
-//	aco_nome varchar(155) not null,
+//    aco_nome varchar(155) not null,
 //    aco_cpf varchar(14) not null,
 //    aco_pac_codigo int not null,
 //    foreign key (aco_pac_codigo) references tb_pacientes(pac_codigo)
 //)default charset = utf8;
 //
 //create table tb_patentes(
-//	pat_codigo int not null auto_increment,
+//    pat_codigo int not null auto_increment,
 //    pat_tipo varchar(80) not null,
 //    primary key (pat_codigo)
 //)default charset = utf8;
 //
 //create table tb_funcionarios(
-//	fun_codigo int not null auto_increment,
+//    fun_codigo int not null auto_increment,
 //    fun_matricula varchar(10) not null,
 //    fun_nome varchar(155) not null,
 //    fun_pat_codigo int,
@@ -44,7 +44,7 @@
 //)default charset = utf8;
 //
 //create table tb_realizacoes(
-//	rea_codigo int not null auto_increment,
+//    rea_codigo int not null auto_increment,
 //    rea_pac_codigo int,
 //    rea_fun_codigo int,
 //    rea_ref_codigo int,
@@ -56,7 +56,7 @@
 //)default charset = utf8;  
 //
 //create table tb_autorizacoes(
-//	aut_codigo int not null auto_increment,
+//    aut_codigo int not null auto_increment,
 //    aut_pac_codigo int,
 //    aut_fun_codigo int,
 //    aut_ref_codigo int,
