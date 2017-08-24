@@ -85,7 +85,7 @@
 //
 //insert into tb_funcionarios(fun_nome, fun_matricula, fun_pat_codigo) values ('Sergio Andrede Vasconcelos', '125.369-1', 1);
 //insert into tb_funcionarios(fun_nome, fun_matricula, fun_pat_codigo) values ('Ana Maria de Aquino', '002.258-2', 2);
-//insert into tb_funcionarios(fun_nome, fun_matricula, fun_pat_codigo) values ('Sergio Andrede Vasconcelos', '025.654-3', 3);
+//insert into tb_funcionarios(fun_nome, fun_matricula, fun_pat_codigo) values ('Marcos de Assis Araújo', '025.654-3', 3);
 //
 //select*from tb_acompanhante;
 //select*from tb_patentes;

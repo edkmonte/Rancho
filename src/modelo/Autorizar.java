@@ -71,6 +71,4 @@ public class Autorizar {
     public void setDtAutorizacao(Date dtAutorizacao) {
         this.dtAutorizacao = dtAutorizacao;
     }
-    
-    
 }

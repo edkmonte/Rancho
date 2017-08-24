@@ -15,12 +15,12 @@ public class ControleRealizar implements IControleRealizar{
     public ControleRealizar(){
         realiza = new CRUDRealizar();
     }
-    @Override
-    public void realizar(String refeicao, String paciente, String funcinario, Date dtRealizacao){
+    
+    public void realizar(Paciente paciente1, Funcionario funcinario1, String refeicao1, Date dtRealizacao) throws  RealizarInexistenteException{
         Realizar realizacao = new Realizar();
-        realizacao.setRefeicao(refeicao);
-        realizacao.setPaciente(paciente);
-        realizacao.setFuncionario(funcinario);
+        realizacao.setPaciente(paciente1);
+        realizacao.setFuncionario(funcinario1);
+        realizacao.setRefeicao(refeicao1);
         realizacao.setDtRealizacao(dtRealizacao);
         realiza.realizar(realizacao);
     }

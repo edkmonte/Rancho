@@ -8,7 +8,6 @@ import jdbc.CRUDAutorizar;
 import modelo.Autorizar;
 import modelo.Funcionario;
 import modelo.Paciente;
-import modelo.Refeicao;
 
 public class ControleAutorizar implements IControleAutorizacao{
     private CRUDAutorizar autoriza;

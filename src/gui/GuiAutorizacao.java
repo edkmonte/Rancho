@@ -5,7 +5,6 @@ import Excessao.AutorizarInexistenteException;
 import Excessao.RefeicaoInexistenteException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,7 +15,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import modelo.Funcionario;
 import modelo.Paciente;
@@ -192,7 +190,6 @@ public class GuiAutorizacao extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 Paciente paciente1 = paciente;    
                 Funcionario funcionario1 = funcionario;
-                //Refeicao refeicao1 = refeicao;
                 String refeicao = String.valueOf(cbRefeicao.getSelectedItem());
                 Date dtAutorizacao = null;
                 String motivo = tfMotivo.getText();

@@ -78,10 +78,12 @@ public class CRUDRealizar {
     public void realizar(Realizar realizar){
         java.util.Date data = realizar.getDtRealizacao();
         java.sql.Date dataSql = new java.sql.Date(data.getTime());
+        int codPac = realizar.getPaciente().getCodigo();
+        int codFun = realizar.getFuncionario().getCodigo();
+        int codRef = buscarCodigoRefeicao(realizar.getRefeicao());
+        //JOptionPane.showMessageDialog(null, "Refeição: "+codRef);
+        //JOptionPane.showMessageDialog(null, "Nome Refeição: "+realizar.getRefeicao());
         try{
-            int codRef = buscarCodigoRefeicao(realizar.getRefeicao());
-            int codFun = buscarCodigoFuncionario(realizar.getFuncionario());
-            int codPac = buscarCodigoPaciente(realizar.getPaciente());
             sql = "insert into tb_realizacoes (rea_pac_codigo, rea_fun_codigo, rea_ref_codigo, rea_dtRealizacao) values (?, ?, ?,?)";
             st = connection.prepareStatement(sql);
             st.setInt(1, codPac);
@@ -89,8 +91,10 @@ public class CRUDRealizar {
             st.setInt(3, codRef);
             st.setDate(4, dataSql);
             st.executeUpdate();
+            JOptionPane.showMessageDialog(null, "inserido no sucesso BANCO");
         }catch(SQLException e){
             resultado = "Erro!";
+            JOptionPane.showMessageDialog(null, "Erro ao inserir no Banco"+ e.getMessage());
         }
     }
     

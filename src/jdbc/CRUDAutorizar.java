@@ -79,9 +79,8 @@ public class CRUDAutorizar {
         int codPac = autorizar.getPaciente().getCodigo();
         int codFun = autorizar.getFuncionario().getCodigo();
         int codRef = buscarCodigoRefeicao(autorizar.getRefeicao());
-        //JOptionPane.showMessageDialog(null, "Pacinete: "+codPac);
-        JOptionPane.showMessageDialog(null, "Nome Refeição: "+autorizar.getRefeicao());
-        JOptionPane.showMessageDialog(null, "Refeição: "+codRef);
+        //JOptionPane.showMessageDialog(null, "Nome Refeição: "+autorizar.getRefeicao());
+        //JOptionPane.showMessageDialog(null, "Refeição: "+codRef);
         try{
             sql = "insert into tb_autorizacoes (aut_pac_codigo, aut_fun_codigo, aut_ref_codigo, aut_dtAutorizado, aut_motivo) values (?, ?, ?, ?, ?);";
             st = connection.prepareStatement(sql);
@@ -91,7 +90,6 @@ public class CRUDAutorizar {
             st.setDate(4, dataSql);
             st.setString(5, autorizar.getMotivo());
             st.executeUpdate();
-            
             JOptionPane.showMessageDialog(null, "inserido no sucesso BANCO");
         }catch(SQLException e){
             resultado = "Erro!";
