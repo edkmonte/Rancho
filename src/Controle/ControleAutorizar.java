@@ -8,6 +8,7 @@ import jdbc.CRUDAutorizar;
 import modelo.Autorizar;
 import modelo.Funcionario;
 import modelo.Paciente;
+import modelo.Refeicao;
 
 public class ControleAutorizar implements IControleAutorizacao{
     private CRUDAutorizar autoriza;
@@ -15,12 +16,12 @@ public class ControleAutorizar implements IControleAutorizacao{
     public ControleAutorizar (){
         autoriza = new CRUDAutorizar();
     }
-    @Override
-    public void autorizar(String refeicao, String paciente, String funcionario, Date dtAutorizacao, String motivo){
+ 
+    public void autorizar(Paciente paciente1, Funcionario funcionario1, String refeicao1, Date dtAutorizacao, String motivo) throws AutorizarInexistenteException {
         Autorizar autorizar = new Autorizar();
-        autorizar.setRefeicao(refeicao);
-        autorizar.setPaciente(paciente);
-        autorizar.setFuncionario(funcionario);
+        autorizar.setPaciente(paciente1);
+        autorizar.setFuncionario(funcionario1);
+        autorizar.setRefeicao(refeicao1);
         autorizar.setDtAutorizacao(dtAutorizacao);
         autorizar.setMotivo(motivo);
         autoriza.autorizar(autorizar);

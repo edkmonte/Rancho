@@ -76,9 +76,12 @@ public class CRUDAutorizar {
     public void autorizar(Autorizar autorizar){
         java.util.Date data = autorizar.getDtAutorizacao();
         java.sql.Date dataSql = new java.sql.Date(data.getTime());
-        int codPac = buscarCodigoPaciente(autorizar.getPaciente());
-        int codFun = buscarCodigoFuncionario(autorizar.getFuncionario());
+        int codPac = autorizar.getPaciente().getCodigo();
+        int codFun = autorizar.getFuncionario().getCodigo();
         int codRef = buscarCodigoRefeicao(autorizar.getRefeicao());
+        //JOptionPane.showMessageDialog(null, "Pacinete: "+codPac);
+        JOptionPane.showMessageDialog(null, "Nome Refeição: "+autorizar.getRefeicao());
+        JOptionPane.showMessageDialog(null, "Refeição: "+codRef);
         try{
             sql = "insert into tb_autorizacoes (aut_pac_codigo, aut_fun_codigo, aut_ref_codigo, aut_dtAutorizado, aut_motivo) values (?, ?, ?, ?, ?);";
             st = connection.prepareStatement(sql);
@@ -88,9 +91,11 @@ public class CRUDAutorizar {
             st.setDate(4, dataSql);
             st.setString(5, autorizar.getMotivo());
             st.executeUpdate();
+            
             JOptionPane.showMessageDialog(null, "inserido no sucesso BANCO");
         }catch(SQLException e){
             resultado = "Erro!";
+            JOptionPane.showMessageDialog(null, "Erro ao inserir no Banco"+ e.getMessage());
         }
     }
     
@@ -145,7 +150,7 @@ public class CRUDAutorizar {
     private int buscarCodigoRefeicao(String refeicao) {
         try{
             int codRefeicao=0;
-            sql = "select ref_codigo from tb_refeicao where ref_tipo = ?;";
+            sql = "select ref_codigo from tb_refeicoes where ref_tipo = ?;";
             st = connection.prepareStatement(sql);
             st.setString(1, refeicao);
             result = st.executeQuery();

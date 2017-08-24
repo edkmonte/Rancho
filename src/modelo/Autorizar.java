@@ -5,7 +5,10 @@ import java.util.Date;
 
 public class Autorizar {
     private int codigo;
-    private String paciente, funcionario, acompanhante, motivo, refeicao;
+    private String acompanhante, motivo;
+    private Funcionario funcionario;
+    private Paciente paciente;
+    private String refeicao;
     private Date dtAutorizacao;
     private SimpleDateFormat sdf;
     
@@ -29,19 +32,19 @@ public class Autorizar {
         this.codigo = codigo;
     }
 
-    public String getPaciente() {
+    public Paciente getPaciente() {
         return paciente;
     }
 
-    public void setPaciente(String paciente) {
+    public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
 
-    public String getFuncionario() {
+    public Funcionario getFuncionario() {
         return funcionario;
     }
 
-    public void setFuncionario(String funcionario) {
+    public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
     }
 

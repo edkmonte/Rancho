@@ -20,6 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import modelo.Funcionario;
 import modelo.Paciente;
+import modelo.Refeicao;
 
 public class GuiAutorizacao extends JPanel {
 
@@ -29,6 +30,9 @@ public class GuiAutorizacao extends JPanel {
     private JComboBox cbRefeicao;
     private JButton btConfirmar, btPesquisar, btCancelar, btPesquisarFun;
     private ControleAutorizar contAutorizar;
+    private Funcionario funcionario;
+    private Paciente paciente;
+    private Refeicao refeicao;
 
     public GuiAutorizacao() throws AutorizarInexistenteException, RefeicaoInexistenteException {
         sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -145,7 +149,7 @@ public class GuiAutorizacao extends JPanel {
                 if (nome.equals("")) {
                     JOptionPane.showMessageDialog(null, "Preencha o campo Paciente!");
                 } else {
-                    Paciente paciente;
+                    paciente = null;
                     try {
                         paciente = contAutorizar.buscarPaciente(nome);
                         tfCodigo.setText(String.valueOf(paciente.getCodigo()));
@@ -167,9 +171,9 @@ public class GuiAutorizacao extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 String nome = tfFuncionario.getText();
                 if (nome.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Preencha o campo Paciente!");
+                    JOptionPane.showMessageDialog(null, "Preencha o campo Funcionário!");
                 } else {
-                    Funcionario funcionario;
+                    funcionario = null;
                     try {
                         funcionario = contAutorizar.buscarFuncionario(nome);
                         tfCodigoFun.setText(String.valueOf(funcionario.getCodigo()));
@@ -186,17 +190,20 @@ public class GuiAutorizacao extends JPanel {
         btConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String paciente = tfCodigo.getText();
-                String funcionario = tfCodigo.getText();
-                String refeicao = (String) cbRefeicao.getSelectedItem();
+                Paciente paciente1 = paciente;    
+                Funcionario funcionario1 = funcionario;
+                //Refeicao refeicao1 = refeicao;
+                String refeicao = String.valueOf(cbRefeicao.getSelectedItem());
                 Date dtAutorizacao = null;
                 String motivo = tfMotivo.getText();
                 try {
                     dtAutorizacao = sdf.parse(tfDtAutorizacao.getText());
-                    contAutorizar.autorizar(paciente, funcionario, refeicao, dtAutorizacao, motivo);
+                    contAutorizar.autorizar(paciente1, funcionario1, refeicao, dtAutorizacao, motivo);
                     JOptionPane.showMessageDialog(null, "Refeição Autorizada!");
                 } catch (ParseException ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao Acessar o Banco de Dados!");
+                } catch (AutorizarInexistenteException ex) {
+                    Logger.getLogger(GuiAutorizacao.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
